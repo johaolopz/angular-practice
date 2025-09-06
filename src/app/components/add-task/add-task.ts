@@ -8,11 +8,16 @@ import { EventService } from '../../services/communication-service';
   styleUrl: './add-task.css'
 })
 export class AddTask {
-  private taskCount = 0;
-  constructor(private eventService: EventService) {}
+  numberTasks: number = 10;
+  titleTask: string = '';
+  activeButton: boolean = true;
 
-  sendMessage() {
-    this.taskCount++;
-    this.eventService.emitEvent(`Tarea-${this.taskCount}`);
+  sendTask() {
+    if (this.titleTask.length > 0) {
+      this.activeButton = false;
+    } else {
+      this.activeButton = true;
+    }
+    console.log(`Tarea enviada con éxito ${this.titleTask}`);
   }
 }
