@@ -1,41 +1,17 @@
-<h1>Número de tareas: {{numberTasks}}</h1>
-<span>Título de tarea: {{titleTask}}</span>
+<span>Título de la tarea: {{ form.get('title')?.value }}</span>
 
-<form class="container-input" #myForm="ngForm" (ngSubmit)="sendData(myForm)">
-    <!-- [(ngModel)] permite actualizar la variable bindeada en tiempo real, osea mientras se escribe -->
-     <!-- Para usar [(ngModel)] se debe importar en el app.module-ts "FormsModule" -->
-    <!-- <input
-        (input)="sendTask()"
-        type="text"
-        placeholder="Ingresar una tarea"
-        [(ngModel)]="titleTask"
-        #myInput="ngModel"
-        name="taskTitle"
-    /> -->
-    <!-- El #myInput es una variable local de plantilla que referencia
-     al input, y con ="ngModel" se le asigna el ngModel a esa variable
-    Esto funciona igualmente con el FormsModule -->
-
-    <div class="input-group">
-        <input
-            type="text"
-            placeholder="Ingresar una tarea"
-            [(ngModel)]="titleTask"
-            #myInput="ngModel"
-            name="taskTitle"
-            required
-        />
-        <span
-            *ngIf="myInput.invalid && (myInput.dirty || myInput.touched) && myInput.errors?.['required']"
-            class="error"
-        >
-            * Este campo es obligatorio
-        </span>
+<form class="container-input" [formGroup]="form" (submit)="sendTaskTitle()" >
+  <div class="input-group">
+    <div
+      class="error"
+      *ngIf="form.get('title')?.invalid &&
+          (form.get('title')?.dirty ||
+          form.get('title')?.touched)"
+    >
+      <small *ngIf="form.get('title')?.errors?.['required']">* El título es requerido</small>
+      <small *ngIf="form.get('title')?.errors?.['maxlength']">* El máximo de caracteres es de 10</small>
     </div>
-    <!-- <button (click)="sendTask()" [disabled]="activeButton">Ingresar</button> -->
-     <button type="submit" [disabled]="!myInput.valid">Ingresar</button>
+    <input type="text" placeholder="Ingresar tarea" formControlName="title" />
+  </div>
+  <button type="submit" [disabled]="!form.valid">Enviar</button>
 </form>
-
-{{ myInput.valid }}
-{{ myInput.dirty }}
-{{ myInput.touched }}

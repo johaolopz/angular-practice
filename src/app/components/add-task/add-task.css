@@ -5,18 +5,15 @@
     bottom: 0;
     padding: 10px;
     display: flex;
-    align-items: start;
+    align-items: end;
     justify-content: center;
     gap: 20px;
 
     .input-group {
-        display: flex;
-        flex-direction: column;
         width: 50%;
 
         input {
-            height: 80%;
-            width: 98%;
+            width: 97%;
             padding: 10px;
             border: 1px solid #ccc;
             outline: none;
@@ -24,10 +21,8 @@
 
         .error {
             color: red;
-            font-size: 12px;
         }
     }
-
 
     button {
         padding: 10px;
