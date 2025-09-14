@@ -1,9 +1,41 @@
 <h1>Número de tareas: {{numberTasks}}</h1>
 <span>Título de tarea: {{titleTask}}</span>
 
-<div class="container-input">
+<form class="container-input" #myForm="ngForm" (ngSubmit)="sendData(myForm)">
     <!-- [(ngModel)] permite actualizar la variable bindeada en tiempo real, osea mientras se escribe -->
      <!-- Para usar [(ngModel)] se debe importar en el app.module-ts "FormsModule" -->
-    <input (input)="sendTask()" type="text" placeholder="Ingresar una tarea" [(ngModel)]="titleTask" />
-    <button (click)="sendTask()" [disabled]="activeButton">Ingresar</button>
-</div>
+    <!-- <input
+        (input)="sendTask()"
+        type="text"
+        placeholder="Ingresar una tarea"
+        [(ngModel)]="titleTask"
+        #myInput="ngModel"
+        name="taskTitle"
+    /> -->
+    <!-- El #myInput es una variable local de plantilla que referencia
+     al input, y con ="ngModel" se le asigna el ngModel a esa variable
+    Esto funciona igualmente con el FormsModule -->
+
+    <div class="input-group">
+        <input
+            type="text"
+            placeholder="Ingresar una tarea"
+            [(ngModel)]="titleTask"
+            #myInput="ngModel"
+            name="taskTitle"
+            required
+        />
+        <span
+            *ngIf="myInput.invalid && (myInput.dirty || myInput.touched) && myInput.errors?.['required']"
+            class="error"
+        >
+            * Este campo es obligatorio
+        </span>
+    </div>
+    <!-- <button (click)="sendTask()" [disabled]="activeButton">Ingresar</button> -->
+     <button type="submit" [disabled]="!myInput.valid">Ingresar</button>
+</form>
+
+{{ myInput.valid }}
+{{ myInput.dirty }}
+{{ myInput.touched }}
