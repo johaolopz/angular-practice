@@ -13,6 +13,10 @@ export class AddTask implements OnInit {
 
   constructor(private fb: FormBuilder) { }
 
+  numberTasks: number = 3;
+  isActive: boolean = true;
+  taskActive!: boolean;
+  tasks: string[] = ['Tarea 1', 'Tarea 2', 'Tarea 3'];
   form!: FormGroup;
 
   ngOnInit(): void {
@@ -22,8 +26,11 @@ export class AddTask implements OnInit {
   }
 
   sendTaskTitle(): void {
-    if (this.form.valid) {
+    if (this.form.valid && this.form.get('title')?.value !== '') {
+      this.taskActive = false;
       console.log(this.form.value.title);
+    } else {
+      this.taskActive = true;
     }
   }
 }
