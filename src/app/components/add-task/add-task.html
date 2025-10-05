@@ -16,10 +16,9 @@
 </div> -->
 <br/>
 <h2>Lista de tareas:</h2>
-<div class="container_task">
+<div class="container_task" [ngStyle]="{'justify-content': tasks.length === 0 ? 'center' : ''}">
   <div
     class="task"
-    [ngStyle]="{'justify-content': tasks.length === 0 ? 'center' : ''}"
     *ngFor="let task of tasks let i = index"
   >
     <div class="title_task_group">
@@ -48,13 +47,13 @@
         Eliminar
       </button>
     </div>
-    <span
+  </div>
+      <span
       [ngStyle]="{'color': 'white'}"
       *ngIf="tasks.length === 0"
     >
       No hay Tareas
     </span>
-  </div>
 </div>
 
 <form class="container-input" [formGroup]="form" (submit)="sendTaskTitle()" >
