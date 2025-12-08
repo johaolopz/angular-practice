@@ -1,4 +1,5 @@
-import { AfterViewInit, ChangeDetectorRef, Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
+import { Task } from './models/task.interface';
 
 @Component({
   selector: 'app-root',
@@ -6,32 +7,47 @@ import { AfterViewInit, ChangeDetectorRef, Component, signal } from '@angular/co
   standalone: false,
   styleUrl: './app.css'
 })
-// export class App implements AfterViewInit{
-//   // protected readonly title = signal('first-ng-app');
-//   // protected readonly name = 'Johao';
-//   ngAfterViewInit(): void {
-//     console.log('Han sido inicializadas las vistas de este componente y sus hijos');
-//   }
-// }
-
-// export class App {
-//     isDestroyed: boolean = false;
-//     countDown: number;
-//     intervalId: any;
-
-//     constructor(private cdr: ChangeDetectorRef) {
-//         this.countDown = 10;
-//         this.intervalId = setInterval(() => {
-//           this.countDown--;
-//           if (this.countDown === 0) {
-//             this.isDestroyed = true;
-//             clearInterval(this.intervalId);
-//           }
-//           this.cdr.markForCheck();
-//         }, 1000);
-//     }
-// }
 
 export class App {
+
+  cambio: boolean = true;
+
+  tasks: Task[] = [
+      {
+        id: 1,
+        title: 'Tarea 1',
+        completed: false
+      },
+      {
+        id: 2,
+        title: 'Tarea 2',
+        completed: false
+      },
+      {
+        id: 3,
+        title: 'Tarea 3',
+        completed: false
+      },
+      {
+        id: 4,
+        title: 'Tarea 4',
+        completed: false
+      },
+      {
+        id: 5,
+        title: 'Tarea 5',
+        completed: false
+      },
+      {
+        id: 6,
+        title: 'Tarea 6',
+        completed: false
+      },
+      {
+        id: 7,
+        title: 'Tarea 7',
+        completed: false
+      }
+    ];
   
 }

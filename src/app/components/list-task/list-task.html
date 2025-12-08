@@ -1,4 +1,45 @@
 <h3><- ListTask Component -></h3>
-<ul>
+<!-- <ul>
     <li *ngFor="let tsk of taskList">{{ tsk }}</li>
-</ul>
+</ul> -->
+<br/>
+<h2>Lista de tareas:</h2>
+<div class="container_task" [ngStyle]="{'justify-content': tasks.length === 0 ? 'center' : ''}">
+  <div
+    class="task"
+    *ngFor="let task of tasks let i = index"
+  >
+    <div class="title_task_group">
+      <small>
+      {{ i + 1 }}
+      </small>
+      <span
+        [ngClass]="{'subrayar': task.completed}"
+        [appTaskStatus]="!task.completed"
+      >
+        {{ task.title }}
+      </span>
+    </div>
+    <!-- <div class="actions_task_group">
+      <input
+        class="task_check"
+        type="checkbox"
+        [checked]="task.completed"
+        (change)="markTaskCompleted(task)"
+      />
+      <button
+        class="task_delete"
+        (click)="deleteTask(task.id)"
+        [appConfirmDelete]="task.title"
+      >
+        Eliminar
+      </button>
+    </div> -->
+  </div>
+      <span
+      [ngStyle]="{'color': 'white'}"
+      *ngIf="tasks.length === 0"
+    >
+      No hay Tareas
+    </span>
+</div>
