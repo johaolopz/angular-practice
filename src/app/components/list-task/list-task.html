@@ -3,6 +3,8 @@
     <li *ngFor="let tsk of taskList">{{ tsk }}</li>
 </ul> -->
 <br/>
+<h1 class="number_task">Número de tareas: {{ this.tasks.length }}</h1>
+<br/>
 <h2>Lista de tareas:</h2>
 <div class="container_task" [ngStyle]="{'justify-content': tasks.length === 0 ? 'center' : ''}">
   <div
@@ -11,7 +13,7 @@
   >
     <div class="title_task_group">
       <small>
-      {{ i + 1 }}
+      {{ task.id }}.
       </small>
       <span
         [ngClass]="{'subrayar': task.completed}"
@@ -20,12 +22,12 @@
         {{ task.title }}
       </span>
     </div>
-    <!-- <div class="actions_task_group">
+    <div class="actions_task_group">
       <input
         class="task_check"
         type="checkbox"
         [checked]="task.completed"
-        (change)="markTaskCompleted(task)"
+        (change)="completeTask(task)"
       />
       <button
         class="task_delete"
@@ -34,7 +36,7 @@
       >
         Eliminar
       </button>
-    </div> -->
+    </div>
   </div>
       <span
       [ngStyle]="{'color': 'white'}"

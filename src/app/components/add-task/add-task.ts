@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { EventService } from '../../services/communication-service';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { NgForm, FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { title } from 'process';
 import { Task } from '../../models/task.interface';
@@ -12,48 +11,14 @@ import { Task } from '../../models/task.interface';
 })
 export class AddTask implements OnInit {
 
+  @Output() taskAdded: EventEmitter<Task> = new EventEmitter<Task>();
+
   constructor(private fb: FormBuilder) { }
 
   numberTasks: number = 7;
   isActive: boolean = true;
   taskActive!: boolean;
-  tasks: Task[] = [
-    {
-      id: 1,
-      title: 'Tarea 1',
-      completed: false
-    },
-    {
-      id: 2,
-      title: 'Tarea 2',
-      completed: false
-    },
-    {
-      id: 3,
-      title: 'Tarea 3',
-      completed: false
-    },
-    {
-      id: 4,
-      title: 'Tarea 4',
-      completed: false
-    },
-    {
-      id: 5,
-      title: 'Tarea 5',
-      completed: false
-    },
-    {
-      id: 6,
-      title: 'Tarea 6',
-      completed: false
-    },
-    {
-      id: 7,
-      title: 'Tarea 7',
-      completed: false
-    }
-  ];
+  tasks: Task[] = [];
   form!: FormGroup;
 
   ngOnInit(): void {
@@ -64,6 +29,13 @@ export class AddTask implements OnInit {
 
   sendTaskTitle(): void {
     if (this.form.valid && this.form.get('title')?.value !== '') {
+      const newTask: Task = {
+        id: Math.floor(Math.random() * 1000),
+        title: this.form?.value?.title,
+        completed: false
+      }
+      this.taskAdded.emit(newTask);
+      this.form.reset();
       this.taskActive = false;
       console.log(this.form.value.title);
     } else {

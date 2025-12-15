@@ -41,3 +41,14 @@
 
    }
 }
+
+
+.number_task {
+    position: absolute;
+    right: 10px;
+    background-color: gray;
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 0.6rem;
+}
