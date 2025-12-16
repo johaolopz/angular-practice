@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Task } from './models/task.interface';
+import { TasksService } from './services/tasks.service';
 
 @Component({
   selector: 'app-root',
@@ -8,18 +9,25 @@ import { Task } from './models/task.interface';
   styleUrl: './app.css'
 })
 
-export class App {
+export class App implements OnInit {
+  
   tasks: Task[] = [];
   
+  constructor(private service: TasksService) {}
+
+  ngOnInit(): void {
+    this.tasks = this.service.getTasks()
+  }
+  
   addTask(task: Task): void {
-    this.tasks.push(task);
+    this.service.addTask(task)
   }
 
   markTaskCompleted(task: Task): void {
-    task.completed = !task.completed
+    this.service.completeTask(task.id)
   }
 
   deleteTask(id: number): void {
-    this.tasks = this.tasks.filter(task => task.id !== id);
+    this.service.deleteTask(id)
   } 
 }
