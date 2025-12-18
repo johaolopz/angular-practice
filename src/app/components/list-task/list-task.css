@@ -1,47 +1,58 @@
-.container_task {
-   margin: 0 auto;
-   width: 50%;
+/* .flex {
    display: flex;
-   flex-direction: column;
-   align-items: center;
-   background-color: #3f3f3f;
-   overflow-y: auto;
-   max-height: 400px;
-   min-height: 400px;
+   gap: 20px;
+   width: 100%; */
 
-   .task {
-         padding: 10px;
-         margin: 10px;
-         border: 1px solid #222;
-         width: 85%;
-         display: flex;
-         justify-content: space-between;
-         color: white;
+   .container_task {
+      margin: 0 auto;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #3f3f3f;
+      overflow-y: auto;
+      max-height: 400px;
+      min-height: 400px;
 
-         .title_task_group {
-            .subrayar {
-                text-decoration: line-through;
-            }
-         }
-
-         .actions_task_group {
+      .task {
+            padding: 30px;
+            margin: 10px;
+            border: 1px solid #222;
+            width: 85%;
             display: flex;
-            align-items: center;
-            gap: 8px;
+            justify-content: space-between;
+            color: white;
 
-             .task_delete {
-                background-color: red;
-                cursor: pointer;
-                padding: 5px;
-                border: none;
-                outline: none;
-                color: white;
-             }
-         }
+            .title_task_group {
+               /* .status {
+                  position: absolute;
+                  right: 10px;
+                  top: 5px;
+               } */
 
+               .subrayar {
+                  text-decoration: line-through;
+               }
+            }
+
+            .actions_task_group {
+               display: flex;
+               align-items: center;
+               gap: 8px;
+
+               .task_delete {
+                  background-color: red;
+                  cursor: pointer;
+                  padding: 5px;
+                  border: none;
+                  outline: none;
+                  color: white;
+               }
+            }
+
+      }
    }
-}
-
+/* } */
 
 .number_task {
     position: absolute;

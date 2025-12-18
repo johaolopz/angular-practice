@@ -9,6 +9,7 @@ import { AddTask } from './components/add-task/add-task';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StatusTaskDirective } from './directives/status-task.directive';
 import { ConfirmDeleteDirective } from './directives/confirm-delete.directive';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ConfirmDeleteDirective } from './directives/confirm-delete.directive';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),

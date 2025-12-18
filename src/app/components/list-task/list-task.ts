@@ -9,7 +9,8 @@ import { Task } from '../../models/task.interface';
   styleUrl: './list-task.css'
 })
 export class ListTask {
-  @Input('listTasks') tasks: Task[] = [];
+  @Input('listTasks') tasks: Task[] = []
+  @Input() taskUpload: Task[] = []
   
   @Output() taskCompleted: EventEmitter<Task> = new EventEmitter<Task>()
   @Output() taskDeleted: EventEmitter<number> = new EventEmitter<number>()

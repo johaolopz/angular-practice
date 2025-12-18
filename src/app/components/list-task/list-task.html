@@ -5,43 +5,82 @@
 <br/>
 <h1 class="number_task">Número de tareas: {{ this.tasks.length }}</h1>
 <br/>
-<h2>Lista de tareas:</h2>
-<div class="container_task" [ngStyle]="{'justify-content': tasks.length === 0 ? 'center' : ''}">
-  <div
-    class="task"
-    *ngFor="let task of tasks let i = index"
-  >
-    <div class="title_task_group">
-      <small>
-      {{ task.id }}.
-      </small>
-      <span
-        [ngClass]="{'subrayar': task.completed}"
-        [appTaskStatus]="!task.completed"
-      >
-        {{ task.title }}
-      </span>
+<h2>Lista de tareas pendientes:</h2>
+<!-- <div class="flex">
+  <div class="container_task" [ngStyle]="{'justify-content': tasks.length === 0 ? 'center' : ''}">
+    <div
+      class="task"
+      *ngFor="let task of tasks let i = index"
+    >
+      <div class="title_task_group">
+        <small>
+        {{ task.id }}.
+        </small>
+        <span
+          [ngClass]="{'subrayar': task.completed}"
+          [appTaskStatus]="!task.completed"
+        >
+          {{ task.title }}
+        </span>
+      </div>
+      <div class="actions_task_group">
+        <input
+          class="task_check"
+          type="checkbox"
+          [checked]="task.completed"
+          (change)="completeTask(task)"
+        />
+        <button
+          class="task_delete"
+          (click)="deleteTask(task.id)"
+          [appConfirmDelete]="task.title"
+        >
+          Eliminar
+        </button>
+      </div>
     </div>
-    <div class="actions_task_group">
-      <input
-        class="task_check"
-        type="checkbox"
-        [checked]="task.completed"
-        (change)="completeTask(task)"
-      />
-      <button
-        class="task_delete"
-        (click)="deleteTask(task.id)"
-        [appConfirmDelete]="task.title"
-      >
-        Eliminar
-      </button>
-    </div>
-  </div>
-      <span
+    <span
       [ngStyle]="{'color': 'white'}"
       *ngIf="tasks.length === 0"
     >
       No hay Tareas
     </span>
+  </div>
+  <div class="container_task">
+    <div
+      class="task"
+      *ngFor="let task of taskUpload let i = index"
+    >
+      <div class="title_task_group">
+        <small>
+          <span class="status" [appTaskStatus]="task.completed" *ngIf="!task.completed">
+            Pendiente
+          </span>
+          <span class="statusTrue" [appTaskStatus]="task.completed" *ngIf="task.completed">
+            Completa
+          </span>
+          &nbsp;
+          {{ task.title }}.
+        </small>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="container_task">
+  <div
+    class="task"
+    *ngFor="let task of taskUpload let i = index"
+  >
+    <div class="title_task_group">
+      <small>
+          @if (!task.completed) {
+            <span class="status" [appTaskStatus]="task.completed">Pendiente</span>
+          } @else {
+            <span class="statusTrue" [appTaskStatus]="task.completed">Completa</span>
+          }
+          &nbsp;
+          {{ task.title }}.
+        </small>
+    </div>
+  </div>
 </div>
