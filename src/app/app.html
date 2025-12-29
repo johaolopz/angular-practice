@@ -1,8 +1,14 @@
-<app-add-task (taskAdded)="addTask($event)"></app-add-task>
+<!-- <app-add-task (taskAdded)="addTask($event)"></app-add-task>
 <app-list-task
     [listTasks]="tasks"
     [taskUpload]="taskUpload"
     (taskCompleted)="markTaskCompleted($event)"
     (taskDeleted)="deleteTask($event)"
-></app-list-task>
+></app-list-task> -->
+<nav class="navbar" *ngIf="isLoggedIn">
+    <div class="nav-content">
+        <span class="logo">Task Manager</span>
+        <button class="btn-logout" (click)="logout()">Cerrar Sesión</button>
+    </div>
+</nav>
 <router-outlet />

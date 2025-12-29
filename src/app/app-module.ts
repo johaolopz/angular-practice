@@ -3,26 +3,20 @@ import { BrowserModule, provideClientHydration, withEventReplay } from '@angular
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
-import { AddComponent } from './components/addTask/add.component';
-import { ListTask } from './components/list-task/list-task';
-import { AddTask } from './components/add-task/add-task';
-import { ReactiveFormsModule } from '@angular/forms';
-import { StatusTaskDirective } from './directives/status-task.directive';
-import { ConfirmDeleteDirective } from './directives/confirm-delete.directive';
+import { LoginComponent } from './components/login/login';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
     App,
-    AddComponent,
-    ListTask,
-    AddTask,
-    StatusTaskDirective,
-    ConfirmDeleteDirective
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule
   ],

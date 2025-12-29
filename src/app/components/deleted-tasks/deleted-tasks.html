@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="header">
+        <button class="btn-back" (click)="goBack()"><- Volver</button>
+                <h1>Tareas Eliminadas</h1>
+    </div>
+
+    <div class="task-list">
+        <div *ngFor="let task of tasks" class="task-item">
+            <div class="task-info">
+                <span class="task-id">#{{ task.id }}</span>
+                <span class="task-title">{{ task.title }}</span>
+            </div>
+            <button class="btn-restore" (click)="restoreTask(task.id)">Restablecer</button>
+        </div>
+
+        <div *ngIf="tasks.length === 0" class="empty-state">
+            <p>No hay tareas eliminadas.</p>
+        </div>
+    </div>
+</div>

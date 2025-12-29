@@ -18,20 +18,42 @@ export class TasksService {
 
   getTasks(): Task[] {
     this.getFromLocalStorage()
-    return this.tasks
+    return this.tasks.filter(task => !task.deleted);
+  }
+
+  getCompletedTasks(): Task[] {
+    this.getFromLocalStorage()
+    return this.tasks.filter(task => task.completed && !task.deleted);
+  }
+
+  getDeletedTasks(): Task[] {
+    this.getFromLocalStorage()
+    return this.tasks.filter(task => task.deleted);
   }
 
   addTask(task: Task): void {
-    this.tasks.push(task)
+    this.tasks.push({ ...task, deleted: false })
     this.setLocalStorage()
     // Notificar a los suscriptores que las tareas han cambiado
-    this.taskChanged.next(this.tasks.slice())
+    this.taskChanged.next(this.getTasks())
   }
 
   deleteTask(id: number): void {
-    this.tasks = this.tasks.filter(task => task.id !== id)
-    this.setLocalStorage()
-    this.taskChanged.next(this.tasks.slice())
+    const task = this.tasks.find(t => t.id === id);
+    if (task) {
+      task.deleted = true;
+      this.setLocalStorage();
+      this.taskChanged.next(this.getTasks());
+    }
+  }
+
+  restoreTask(id: number): void {
+    const task = this.tasks.find(t => t.id === id);
+    if (task) {
+      task.deleted = false;
+      this.setLocalStorage();
+      this.taskChanged.next(this.getTasks());
+    }
   }
 
   completeTask(id: number): void {
@@ -39,7 +61,7 @@ export class TasksService {
     if (task) {
       task.completed = !task.completed
       this.setLocalStorage()
-      this.taskChanged.next(this.tasks.slice())
+      this.taskChanged.next(this.getTasks())
     }
   }
 

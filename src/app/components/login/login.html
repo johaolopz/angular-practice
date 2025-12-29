@@ -1,0 +1,8 @@
+<div class="login-container">
+    <div class="login-card">
+        <h1>Bienvenido</h1>
+        <button class="btn-login" [disabled]="isLoading" (click)='onLogin()'>
+            {{ isLoading ? 'Cargando...' : 'Login' }}
+        </button>
+    </div>
+</div>

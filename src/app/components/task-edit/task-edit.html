@@ -1,5 +1,9 @@
-<div class="add-task-container">
-    <h1>Agregar Nueva Tarea</h1>
+<div class="edit-task-container" *ngIf="task">
+    <h1>Editar Tarea: {{ task.title }}</h1>
+
+    <div class="task-info">
+        <p><strong>ID:</strong> {{ task.id }}</p>
+    </div>
 
     <div class="form-container">
         <div class="form-group">
@@ -11,17 +15,24 @@
         <div class="form-group">
             <label for="taskDescription">Descripción:</label>
             <textarea id="taskDescription" [(ngModel)]="taskDescription"
-                placeholder="Escribe la descripción de la tarea..." class="task-textarea" rows="4"></textarea>
+                placeholder="Escribe la descripción de la tarea..." class="task-textarea" rows="6"></textarea>
         </div>
 
         <div class="button-group">
-            <button class="btn btn-primary" (click)="addTask()"
+            <button class="btn btn-primary" (click)="updateTask()"
                 [disabled]="!taskTitle.trim() || !taskDescription.trim()">
-                Guardar Tarea
+                Actualizar Tarea
             </button>
             <button class="btn btn-secondary" (click)="cancel()">
                 Cancelar
             </button>
         </div>
     </div>
+</div>
+
+<div class="edit-task-container" *ngIf="!task">
+    <h2>Tarea no encontrada</h2>
+    <button class="btn btn-secondary" (click)="cancel()">
+        Volver a la lista
+    </button>
 </div>

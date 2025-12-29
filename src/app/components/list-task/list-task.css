@@ -1,7 +1,29 @@
-/* .flex {
+.nav-links {
+   display: flex;
+   gap: 15px;
+   justify-content: center;
+   margin-bottom: 20px;
+}
+
+.btn-nav {
+   padding: 10px 20px;
+   background-color: #555;
+   color: white;
+   border: none;
+   border-radius: 8px;
+   cursor: pointer;
+   transition: background 0.3s ease;
+   font-weight: 500;
+}
+
+.btn-nav:hover {
+   background-color: #777;
+}
+
+.flex {
    display: flex;
    gap: 20px;
-   width: 100%; */
+   width: 100%;
 
    .container_task {
       margin: 0 auto;
@@ -15,51 +37,118 @@
       min-height: 400px;
 
       .task {
-            padding: 30px;
-            margin: 10px;
-            border: 1px solid #222;
-            width: 85%;
-            display: flex;
-            justify-content: space-between;
-            color: white;
+         padding: 30px;
+         margin: 10px;
+         border: 1px solid #222;
+         width: 85%;
+         display: flex;
+         justify-content: space-between;
+         color: white;
 
-            .title_task_group {
-               /* .status {
+         .title_task_group {
+            /* .status {
                   position: absolute;
                   right: 10px;
                   top: 5px;
                } */
 
-               .subrayar {
-                  text-decoration: line-through;
-               }
+            .subrayar {
+               text-decoration: line-through;
+            }
+         }
+
+         .actions_task_group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            .btn-details {
+               background-color: skyblue;
+               cursor: pointer;
+               padding: 5px 10px;
+               border: none;
+               outline: none;
+               color: white;
+               font-weight: 600;
+               border-radius: 4px;
+               transition: all 0.3s ease;
             }
 
-            .actions_task_group {
-               display: flex;
-               align-items: center;
-               gap: 8px;
-
-               .task_delete {
-                  background-color: red;
-                  cursor: pointer;
-                  padding: 5px;
-                  border: none;
-                  outline: none;
-                  color: white;
-               }
+            .btn-details:hover {
+               background-color: #87ceeb;
+               transform: translateY(-2px);
+               box-shadow: 0 2px 6px rgba(135, 206, 235, 0.4);
             }
+
+            .btn-edit {
+               background-color: #28a745;
+               cursor: pointer;
+               padding: 5px 10px;
+               border: none;
+               outline: none;
+               color: white;
+               font-weight: 600;
+               border-radius: 4px;
+               transition: all 0.3s ease;
+            }
+
+            .btn-edit:hover {
+               background-color: #218838;
+               transform: translateY(-2px);
+               box-shadow: 0 2px 6px rgba(40, 167, 69, 0.4);
+            }
+
+            .task_delete {
+               background-color: red;
+               cursor: pointer;
+               padding: 5px;
+               border: none;
+               outline: none;
+               color: white;
+            }
+         }
 
       }
    }
-/* } */
+}
 
 .number_task {
-    position: absolute;
-    right: 10px;
-    background-color: gray;
-    color: white;
-    padding: 5px;
-    border-radius: 10px;
-    font-size: 0.6rem;
+   position: absolute;
+   right: 10px;
+   background-color: gray;
+   color: white;
+   padding: 5px;
+   border-radius: 10px;
+   font-size: 0.6rem;
+}
+
+/* Botón flotante (FAB) */
+.fab-button {
+   position: fixed;
+   bottom: 30px;
+   right: 30px;
+   width: 60px;
+   height: 60px;
+   border-radius: 50%;
+   background-color: #007bff;
+   color: white;
+   font-size: 32px;
+   border: none;
+   cursor: pointer;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+   transition: all 0.3s ease;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   z-index: 1000;
+}
+
+.fab-button:hover {
+   background-color: #0056b3;
+   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+   transform: scale(1.1);
+}
+
+.fab-button:active {
+   transform: scale(0.95);
 }

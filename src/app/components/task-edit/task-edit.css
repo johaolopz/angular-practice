@@ -1,16 +1,31 @@
-.add-task-container {
-    max-width: 600px;
+.edit-task-container {
+    max-width: 700px;
     margin: 50px auto;
-    padding: 30px;
+    padding: 40px;
     background-color: #f5f5f5;
     border-radius: 8px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.add-task-container h1 {
+.edit-task-container h1 {
     text-align: center;
     color: #333;
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+
+.task-info {
+    text-align: center;
     margin-bottom: 30px;
+    padding: 10px;
+    background-color: #e9ecef;
+    border-radius: 4px;
+}
+
+.task-info p {
+    margin: 0;
+    font-size: 16px;
+    color: #555;
 }
 
 .form-container {
